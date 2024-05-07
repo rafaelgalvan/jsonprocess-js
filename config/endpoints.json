@@ -1,5 +1,10 @@
 {
+    "Aterramento": "aterramento",
+    "EncabecamentoPrimario": "encabecamento",
+    "EncabecamentoPrimarioSubterraneo": "encabecamento",
+    "ParaRaioMT": "paraRaioMt",
     "PosteDistribuicao": "poste",
+    "TransformadorDistribuicao": "trafoDistAereo",
     "TrechoPrimario": "trechoPrimarioAereo",
     "TrechoSecundario": "trechoSecundarioAereo",
     "EstruturaPrimaria": "estruturaPrimaria",

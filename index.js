@@ -2,13 +2,16 @@ const config =  require('./config/config.json');
 const endpoints = require('./config/endpoints.json');
 const atividade = require('./data/atividade.json');
 const { 
-    gerar_codigo_de_obra, 
     send_post_request, 
     send_put_request, 
-    send_delete_request 
+    send_delete_request,
+    send_commit_request
 } = require('./lib/functions.js');
 
-const codigoDaObra = gerar_codigo_de_obra();
+// verifica se o parâmetro commit foi enviado na chamada
+const commit = process.argv[2];
+
+const codigoDaObra = atividade.idAtividade;
 
 function getHeaders() {
     return new Headers({
@@ -17,7 +20,16 @@ function getHeaders() {
     });
 }
 
+async function enviarCommit() {
+    let url = config.url + 'obra/commit'
+    let objeto = {"codigoDaObra": codigoDaObra};
+    console.log(`Enviando Commit da obra ${codigoDaObra}`);
+    let response = await send_commit_request(url, getHeaders(), objeto);
+    console.log(`Commit enviado. Resposta: ${response.status}: ${response.statusText}`);
+}
+
 async function inserirObjetos(objetos) {
+    console.log("::: Atividade - id: " + codigoDaObra);
     for (const objeto of objetos) {
         objeto.codigoDaObra = codigoDaObra;
         let url = config.url + endpoints[objeto.type];
@@ -72,4 +84,8 @@ async function processarObjetos() {
     }
 }
 
-processarObjetos();
+if (commit !== undefined && (commit === "commit" || commit === '-c')) {
+    enviarCommit();
+} else {
+    processarObjetos();
+}
