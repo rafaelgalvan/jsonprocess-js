@@ -63,21 +63,21 @@ async function removerObjetos(objetos) {
 
 async function processarObjetos() {
     if (atividade.entidadesCadastradas !== undefined && atividade.entidadesCadastradas.length > 0) {
-        console.log("::: Objetos Inseridos :::")
+        console.log("::: Represando objetos inseridos :::")
         console.log();
         await inserirObjetos(atividade.entidadesCadastradas);
         console.log();
     }
     
     if (atividade.entidadesAlteradas !== undefined && atividade.entidadesAlteradas.length > 0) {
-        console.log("::: Objetos Alterados :::");
+        console.log("::: Represando objetos alterados :::");
         console.log();
         await alterarObjetos(atividade.entidadesAlteradas);
         console.log();
     }
     
     if (atividade.entidadesExcluidas !== undefined && atividade.entidadesExcluidas.length > 0) {
-        console.log("::: Objetos Removidos :::");
+        console.log("::: Represando objetos removidos :::");
         console.log();
         await removerObjetos(atividade.entidadesExcluidas);
         console.log();
