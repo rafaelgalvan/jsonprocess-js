@@ -38,7 +38,6 @@ async function enviarCommit() {
  * @param {Array} objetos Array com os objetos
  */
 async function inserirObjetos(objetos) {
-    console.log("::: Atividade - id: " + codigoDaObra);
     for (const objeto of objetos) {
         objeto.codigoDaObra = codigoDaObra;
         let endpoint = get_object_endpoint(objeto, endpoints);
@@ -84,6 +83,7 @@ async function removerObjetos(objetos) {
  * Processamento dos objetos
  */
 async function processarObjetos() {
+    console.log("::: Atividade - id: " + codigoDaObra + " :::");
     if (atividade.entidadesCadastradas !== undefined && atividade.entidadesCadastradas.length > 0) {
         console.log("::: Represando objetos inseridos :::")
         console.log();
