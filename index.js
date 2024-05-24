@@ -3,6 +3,7 @@ const endpoints = require('./config/endpoints.json');
 const atividade = require('./data/atividade.json');
 const {
     get_object_endpoint,
+    add_endpoint_specific_treatment,
     send_post_request, 
     send_put_request, 
     send_delete_request,
@@ -74,6 +75,7 @@ async function removerObjetos(objetos) {
     for (const objeto of objetos) {
         objeto.codigoDaObra = codigoDaObra;
         let endpoint = get_object_endpoint(objeto, endpoints);
+        endpoint = add_endpoint_specific_treatment(endpoint, objeto.type);
         let url = `${config.url}${endpoint}/${codigoDaObra}/${objeto.id}`;
         let response = await send_delete_request(url, headers);
         console.log(`Objeto: ${objeto.type}, ID: ${objeto.id}, resposta: ${response.status}: ${response.statusText}`);
