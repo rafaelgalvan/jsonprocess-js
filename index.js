@@ -57,6 +57,7 @@ async function alterarObjetos(objetos) {
     for (const objeto of objetos) {
         objeto.codigoDaObra = codigoDaObra;
         let endpoint = get_object_endpoint(objeto, endpoints);
+        endpoint = add_endpoint_specific_treatment(endpoint, objeto.type);
         let url = `${config.url}${endpoint}/${objeto.id}`
 
         let response = await send_put_request(url, getHeaders(), objeto);
