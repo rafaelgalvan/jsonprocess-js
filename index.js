@@ -58,7 +58,12 @@ async function alterarObjetos(objetos) {
         objeto.codigoDaObra = codigoDaObra;
         let endpoint = get_object_endpoint(objeto, endpoints);
         endpoint = add_endpoint_specific_treatment(endpoint, objeto.type);
-        let url = `${config.url}${endpoint}/${objeto.id}`
+
+        if (objeto.type === 'LuminariaIP') {
+            endpoint = `${endpoint}/${'updateCustom'}`;
+        }
+
+        let url = `${config.url}${endpoint}/${objeto.id}`;
 
         let response = await send_put_request(url, getHeaders(), objeto);
         console.log(`Objeto: ${objeto.type}, ID: ${objeto.id}, resposta: ${response.status}: ${response.statusText}`);
