@@ -34,5 +34,7 @@
     "TrechoPrimarioSubterraneo": "trechoPrimarioSubterraneo",
     "TrechoSecundario": "trechoSecundarioAereo",
     "TrechoSecundarioSubterraneo": "trechoSecundarioSubterraneo",
-    "UnidadeConsumidora": "unidadeConsumidora"
+    "UnidadeConsumidora": "unidadeConsumidora",
+    "PontoSustentacao": "pontoSustentacao",
+    "DivisorCircuito": "divisorCircuito"
 }
