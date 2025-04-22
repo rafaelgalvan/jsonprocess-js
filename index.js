@@ -59,10 +59,6 @@ async function alterarObjetos(objetos) {
         let endpoint = get_object_endpoint(objeto, endpoints);
         endpoint = add_endpoint_specific_treatment(endpoint, objeto.type);
 
-        if (objeto.type === 'LuminariaIP') {
-            endpoint = `${endpoint}/${'updateCustom'}`;
-        }
-
         let url = `${config.url}${endpoint}/${objeto.id}`;
 
         let response = await send_put_request(url, getHeaders(), objeto);
